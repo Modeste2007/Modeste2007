@@ -1,0 +1,397 @@
+/* Global */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Conteneur principal */
+.messaging-container {
+    width: 90%;
+    max-width: 500px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* En-tête */
+.header {
+    background: #007bff;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 18px;
+}
+
+/* Menu déroulant */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-btn {
+    background: transparent;
+    border: none;
+    color: black;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dropdown-menu button {
+    background: none;
+    border: none;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+    cursor: pointer;
+    color: #333;
+    width: 100%;
+}
+
+.dropdown-menu button:hover {
+    background: #f0f0f0;
+}
+
+/* Afficher le menu déroulant au clic */
+.dropdown.active .dropdown-menu {
+    display: block;
+    opacity: 1;
+}
+
+/* Zone de discussion */
+.chat-box {
+    flex-grow: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background: #f4f4f4;
+    border-top: 1px solid #ddd;
+    height: 300px;
+}
+
+/* Saisie utilisateur */
+.input-container {
+    display: flex;
+    border-top: 1px solid #ddd;
+}
+
+#user-input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-right: 1px solid #ddd;
+}
+
+#send-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#send-btn:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* Mode sombre : fond et texte */
+.dark-mode {
+    background-color: #2c2c2c;
+    color: #f1f1f1; /* Texte clair pour le contraste */
+}
+
+.dark-mode .messaging-container {
+    background-color: #3b3b3b;
+}
+
+.dark-mode .header {
+    background-color: #444;
+    color: #ffffff;
+}
+
+.dark-mode .dropdown-menu {
+    background-color: #555;
+    border-color: #666;
+    opacity: 1;
+}
+
+.dark-mode .dropdown-menu button {
+    color: #f1f1f1;
+}
+
+.dark-mode .dropdown-menu button:hover {
+    background-color: #666;
+}
+
+/* Zone de discussion : messages */
+.dark-mode .chat-box {
+    background: #3b3b3b;
+    color: #e1e1e1;
+}
+
+.dark-mode .chat-box .user {
+    color: #cce7ff; /* Couleur bleutée pour les messages utilisateur */
+}
+
+.dark-mode .chat-box .bot {
+    color: #a1ffa1; /* Couleur verdâtre pour les messages du bot */
+}
+
+/* Barre d'entrée */
+.dark-mode #user-input {
+    background: #444;
+    color: #f1f1f1;
+    border-right-color: #555;
+}
+
+.dark-mode #send-btn {
+    background: #555;
+    color: #ffffff;
+}
+
+.dark-mode #send-btn:hover {
+    background: #777;
+}
+
+/* Autres éléments */
+.dark-mode .options-bar {
+    background: #444;
+    border-color: #555;
+}
+
+.dark-mode .options-bar button {
+    background: #555;
+    color: #ffffff;
+}
+
+.dark-mode .options-bar button:hover {
+    background: #666;
+}
+
+/* Messages : Conteneur global */
+.message {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+/* Messages utilisateur */
+.message.user {
+    justify-content: flex-end; /* Aligné à droite */
+}
+
+.message.user .bubble {
+    background-color: #007bff;
+    color: white;
+    text-align: right;
+}
+
+/* Messages chatbot */
+.message.bot {
+    justify-content: flex-start; /* Aligné à gauche */
+}
+
+.message.bot .bubble {
+    background-color: #e0e0e0;
+    color: #333;
+    text-align: left;
+}
+
+/* Bulles de discussion sans flèche */
+.bubble {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 10px;
+    word-wrap: break-word;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Effet d'ombre */
+    margin: 5px 0;
+}
+
+/* Messages utilisateur */
+.message.user .bubble {
+    background-color: #007bff;
+    color: white;
+    text-align: right;
+    border-top-right-radius: 0px; /* Coin ajusté pour le style */
+}
+
+/* Messages chatbot */
+.message.bot .bubble {
+    background-color: #e0e0e0;
+    color: #333;
+    text-align: left;
+    border-top-left-radius: 0px; /* Coin ajusté pour le style */
+}
+
+/* Mode sombre */
+.dark-mode .bubble {
+    color: #f1f1f1;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3); /* Ombre plus sombre */
+}
+
+.dark-mode .message.user .bubble {
+    background-color: #0056b3;
+}
+
+.dark-mode .message.bot .bubble {
+    background-color: #555;
+}
+
+/* Section d'ajout de question-réponse */
+.faq-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.faq-container h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.faq-container label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.faq-container input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.faq-container button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.faq-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Cache le formulaire d'ajout par défaut */
+.hidden {
+    display: none;
+}
+
+/* Variables pour les couleurs */
+:root {
+    --bg-light: #ffffff;
+    --bg-dark: #121212;
+    --text-light: #333;
+    --text-dark: #f1f1f1;
+    --button-light: #007bff;
+    --button-dark: #0056b3;
+}
+
+/* Mode clair */
+body.light-mode {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+}
+
+body.light-mode .dropdown-btn,
+body.light-mode .dropdown-menu button,
+body.light-mode .faq-container {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+}
+
+body.light-mode .faq-container input,
+body.light-mode .faq-container button {
+    background-color: #fff;
+    color: var(--text-light);
+}
+
+body.light-mode .faq-container input {
+    border: 1px solid #ccc;
+}
+
+body.light-mode .faq-container button {
+    background-color: var(--button-light);
+}
+
+/* Mode sombre */
+body.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+body.dark-mode .dropdown-btn,
+body.dark-mode .dropdown-menu button,
+body.dark-mode .faq-container {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+}
+
+body.dark-mode .faq-container input,
+body.dark-mode .faq-container button {
+    background-color: #333;
+    color: var(--text-dark);
+}
+
+body.dark-mode .faq-container input {
+    border: 1px solid #555;
+}
+
+body.dark-mode .faq-container button {
+    background-color: var(--button-dark);
+}
+
+
+/* Le menu des paramètres est masqué par défaut */
+#settings-menu {
+    display: none; /* Ou tu peux utiliser display: none; pour initialement masquer le menu */
+    position: absolute;
+    top: 50px; /* Exemple de position */
+    right: 10px; /* Exemple de position */
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Lorsque la classe "active" est ajoutée, le menu devient visible */
+#settings-menu.active {
+    display: block; /* Affiche le menu lorsque la classe active est présente */
+}
