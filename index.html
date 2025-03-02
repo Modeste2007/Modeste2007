@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Messagerie</title>
+</head>
+<body>
+    <div class="messaging-container">
+        <!-- En-tête -->
+        <header class="header">
+            <h1>Messagerie</h1>
+            <div class="dropdown">
+                <button id="settings-btn" class="dropdown-btn">⚙️ Paramètres</button>
+                <div id="settings-menu" class="dropdown-menu">
+                    <button id="clear-chat-btn">🗑 Effacer la discussion</button>
+                    <button id="save-chat-btn">💾 Sauvegarder la discussion</button>
+                    <!-- Bouton pour basculer entre mode sombre et clair -->
+                    <button id="dark-mode-toggle" class="mode-toggle-btn">🌙 Mode sombre</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Zone de discussion -->
+        <div id="chat-box" class="chat-box"></div>
+
+        <!-- Saisie utilisateur -->
+        <div class="input-container">
+            <input type="text" id="user-input" placeholder="Écrivez votre message..." autocomplete="on" />
+            <button id="send-btn">Envoyer</button>
+        </div>
+    </div>
+
+    <!-- Menu déroulant avec ajout d'option -->
+    <div class="dropdown">
+        <button class="dropdown-btn">Options</button>
+        <div class="dropdown-menu">
+            <button id="add-faq-btn">Ajouter une question/réponse</button>
+        </div>
+    </div>
+
+    <!-- Section pour ajouter une nouvelle question-réponse -->
+    <div id="faq-container" class="faq-container hidden">
+        <h3>Ajouter une nouvelle question-réponse</h3>
+        <form id="faq-form">
+            <label for="question">Question :</label>
+            <input type="text" id="question" required><br><br>
+            <label for="answer">Réponse :</label>
+            <input type="text" id="answer" required><br><br>
+            <button type="submit">Ajouter</button>
+        </form>
+    </div>
+
+    <script src="../static/script.js"></script>
+</body>
+</html>
